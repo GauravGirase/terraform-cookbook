@@ -155,6 +155,7 @@ variable "instances" {
   default = ["api", "worker"]
 }
 ```
+!["terraform-plan-output](/doc/images/count_plan_after_remove.png)
 **Terraform plan output**
 ```bash
 Plan: 0 to add, 2 to change, 1 to destroy.
@@ -165,3 +166,13 @@ web:(deleted)
 api : 13.232.189.246
 worker: 13.127.77.3
 ```
+
+### ⚠️ Why this matters
+Even though it looks like shifting, internally:
+web instance → 💀 destroyed
+api instance → 💀 destroyed, 🆕 new one created
+worker instance → 💀 destroyed, 🆕 new one created
+**So you lose:**
+- Instance IDs
+- Public IPs
+- Any ephemeral data
