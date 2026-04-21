@@ -1,3 +1,4 @@
+# IAM policy refinement based on real usage logs.
 ```bash
 1. Run workload with minimal IAM
 2. CloudTrail logs AccessDenied events
